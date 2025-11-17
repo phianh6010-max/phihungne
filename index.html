@@ -3,145 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10C1 19/11 Letters</title>
+<title>10C1 19/11 – Letters</title>
 
 <style>
+    /* Nền hồng pastel lung linh */
     body {
         margin: 0;
         height: 100vh;
-        background: linear-gradient(135deg, #020024, #090979, #00d4ff);
         overflow: hidden;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
+
+        background: radial-gradient(circle at top left, #ffb6d9, #ff92c2, #ff68a5, #ff7eb3);
+        background-size: 200% 200%;
+        animation: pinkmove 10s ease-in-out infinite;
+    }
+
+    @keyframes pinkmove {
+        0%   { background-position: 0% 0%; }
+        50%  { background-position: 100% 100%; }
+        100% { background-position: 0% 0%; }
     }
 
     h1 {
         text-align: center;
-        margin-top: 20px;
         color: white;
-        font-size: 2rem;
-        text-shadow: 0 0 15px #ff00f7;
+        margin-top: 20px;
+        font-size: 2.3rem;
+        text-shadow: 0 0 20px rgba(255, 220, 240, 1);
         animation: glow 2s infinite alternate;
     }
 
     @keyframes glow {
-        0% { text-shadow: 0 0 10px #ff00f7; }
-        100% { text-shadow: 0 0 25px #00f7ff; }
+        0% { text-shadow: 0 0 15px #ffe6f5; }
+        100% { text-shadow: 0 0 35px #ff99cc; }
     }
 
-    /* Các bức thư */
+    /* Bức thư */
     .letter {
-        width: 120px;
-        height: 80px;
-        background: #fff;
-        border-radius: 10px;
+        width: 130px;
+        height: 95px;
+        background: white;
+        border-radius: 18px;
         position: absolute;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
         cursor: pointer;
-        transition: transform 0.3s;
+        transition: 0.35s;
+        box-shadow: 0 8px 25px rgba(255, 150, 200, 0.45);
+        transform: rotate(-4deg);
     }
 
     .letter:hover {
-        transform: scale(1.1) rotate(3deg);
+        transform: scale(1.18) rotate(3deg);
+        box-shadow: 0 12px 35px rgba(255, 120, 180, 0.55);
     }
 
-    /* Popup thư */
+    /* Popup đẹp */
     .popup {
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        width: 80%;
-        max-width: 350px;
+        width: 85%;
+        max-width: 380px;
+        padding: 25px;
         background: white;
-        border-radius: 15px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        transition: 0.3s;
+        border-radius: 22px;
+        transform: translate(-50%, -50%) scale(0.2);
+        opacity: 0;
+        transition: 0.35s ease;
+        box-shadow: 0 0 50px rgba(255, 100, 180, 0.5);
         z-index: 999;
+        text-align: center;
     }
 
     .popup.show {
         transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    .popup h2 {
+        color: #ff4fa7;
+        font-weight: 600;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
     }
 
     .close {
         margin-top: 15px;
-        padding: 10px 20px;
-        background: #ff0066;
-        color: white;
+        padding: 10px 25px;
         border: none;
-        border-radius: 10px;
+        background: #ff4fa7;
+        color: white;
+        border-radius: 14px;
         cursor: pointer;
+        font-size: 1rem;
+        box-shadow: 0 5px 18px rgba(255, 80, 160, 0.4);
     }
 
-    /* Bong bóng bay */
-    .bubble {
+    /* Lấp lánh trắng */
+    .sparkle {
         position: absolute;
-        bottom: -50px;
-        background: rgba(255,255,255,0.4);
+        width: 6px;
+        height: 6px;
+        background: rgba(255,255,255,0.9);
         border-radius: 50%;
-        animation: up 7s infinite ease-in;
+        animation: sparkle 3s infinite ease-out;
     }
 
-    @keyframes up {
-        0% { transform: translateY(0); opacity: 1; }
-        100% { transform: translateY(-120vh); opacity: 0; }
+    @keyframes sparkle {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; }
     }
 </style>
 </head>
+
 <body>
 
-<h1>10C1 – Thư bí mật 19/11 💌</h1>
+<h1>💗 Thư Bí Mật 10C1 – 20/11 💗</h1>
 
-<!-- POPUP -->
 <div id="popup" class="popup">
     <h2 id="content"></h2>
     <button class="close" onclick="closePopup()">Đóng</button>
 </div>
 
 <script>
-    // Nội dung các bức thư
     const messages = [
-        "Chúc cô 19/11 thật vui vẻ và luôn xinh đẹp! ❤️",
-        "Con trai 10C1 chúc cô mãi nhiệt huyết với nghề 💛",
-        "Chúc cô lúc nào cũng cười thật tươi nhaa 🌸",
-        "Cảm ơn cô vì đã luôn yêu thương tụi em 🥰",
-        "Cô là người tuyệt vời nhất của 10C1 💖"
+        "Chúc cô 20/11 siêu vui và siêu đẹp! 💗✨",
+        "Cảm ơn cô đã luôn tận tâm với tụi em! 🌸",
+        "Chúc cô lúc nào cũng vui vẻ ạ! 💖",
+        "10C1 yêu cô nhiều lắm ạ! 💕",
+        "Chúc cô luôn vui vẻ – hạnh phúc – thành công! 🌷"
     ];
 
-    // Tạo ngẫu nhiên các bức thư
+    // Thư
     for (let i = 0; i < 5; i++) {
         let letter = document.createElement("div");
         letter.className = "letter";
+        letter.innerHTML = "💌"; 
         letter.style.left = Math.random() * 80 + "vw";
-        letter.style.top = (15 + Math.random() * 70) + "vh";
+        letter.style.top = (20 + Math.random() * 65) + "vh";
         letter.onclick = () => openPopup(messages[i]);
         document.body.appendChild(letter);
     }
 
-    // Bong bóng bay
-    for (let i = 0; i < 25; i++) {
-        let b = document.createElement("div");
-        b.className = "bubble";
-        let size = 10 + Math.random() * 30;
-        b.style.width = b.style.height = size + "px";
-        b.style.left = Math.random() * 100 + "vw";
-        b.style.animationDuration = (4 + Math.random()*4) + "s";
-        document.body.appendChild(b);
-    }
-
-    // Popup
     function openPopup(text) {
         document.getElementById("content").innerText = text;
         document.getElementById("popup").classList.add("show");
     }
-
+    
     function closePopup() {
         document.getElementById("popup").classList.remove("show");
+    }
+
+    // Lấp lánh
+    for (let i = 0; i < 35; i++) {
+        let s = document.createElement("div");
+        s.className = "sparkle";
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.top = Math.random() * 100 + "vh";
+        s.style.animationDuration = (1 + Math.random() * 3) + "s";
+        document.body.appendChild(s);
     }
 </script>
 
 </body>
-  </html>
-
+</html>
