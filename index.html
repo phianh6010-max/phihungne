@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10C1 19/11 Letters</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #020024, #090979, #00d4ff);
+        overflow: hidden;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        color: white;
+        font-size: 2rem;
+        text-shadow: 0 0 15px #ff00f7;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        0% { text-shadow: 0 0 10px #ff00f7; }
+        100% { text-shadow: 0 0 25px #00f7ff; }
+    }
+
+    /* Các bức thư */
+    .letter {
+        width: 120px;
+        height: 80px;
+        background: #fff;
+        border-radius: 10px;
+        position: absolute;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .letter:hover {
+        transform: scale(1.1) rotate(3deg);
+    }
+
+    /* Popup thư */
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 80%;
+        max-width: 350px;
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .popup.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .close {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #ff0066;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    /* Bong bóng bay */
+    .bubble {
+        position: absolute;
+        bottom: -50px;
+        background: rgba(255,255,255,0.4);
+        border-radius: 50%;
+        animation: up 7s infinite ease-in;
+    }
+
+    @keyframes up {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-120vh); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<h1>10C1 – Thư bí mật 19/11 💌</h1>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+    <h2 id="content"></h2>
+    <button class="close" onclick="closePopup()">Đóng</button>
+</div>
+
+<script>
+    // Nội dung các bức thư
+    const messages = [
+        "Chúc cô 19/11 thật vui vẻ và luôn xinh đẹp! ❤️",
+        "Con trai 10C1 chúc cô mãi nhiệt huyết với nghề 💛",
+        "Chúc cô lúc nào cũng cười thật tươi nhaa 🌸",
+        "Cảm ơn cô vì đã luôn yêu thương tụi em 🥰",
+        "Cô là người tuyệt vời nhất của 10C1 💖"
+    ];
+
+    // Tạo ngẫu nhiên các bức thư
+    for (let i = 0; i < 5; i++) {
+        let letter = document.createElement("div");
+        letter.className = "letter";
+        letter.style.left = Math.random() * 80 + "vw";
+        letter.style.top = (15 + Math.random() * 70) + "vh";
+        letter.onclick = () => openPopup(messages[i]);
+        document.body.appendChild(letter);
+    }
+
+    // Bong bóng bay
+    for (let i = 0; i < 25; i++) {
+        let b = document.createElement("div");
+        b.className = "bubble";
+        let size = 10 + Math.random() * 30;
+        b.style.width = b.style.height = size + "px";
+        b.style.left = Math.random() * 100 + "vw";
+        b.style.animationDuration = (4 + Math.random()*4) + "s";
+        document.body.appendChild(b);
+    }
+
+    // Popup
+    function openPopup(text) {
+        document.getElementById("content").innerText = text;
+        document.getElementById("popup").classList.add("show");
+    }
+
+    function closePopup() {
+        document.getElementById("popup").classList.remove("show");
+    }
+</script>
+
+</body>
+  </html>
 
